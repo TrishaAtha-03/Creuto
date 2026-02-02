@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f7f7f7;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.request-box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+select, input, textarea, button {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+}
+
+textarea {
+  height: 120px;
+  font-family: monospace;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+pre {
+  background: #111;
+  color: #0f0;
+  padding: 10px;
+  overflow: auto;
+}

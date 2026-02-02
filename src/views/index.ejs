@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books API Tester</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>📚 Books API – Mini Postman UI</h1>
+
+<div class="request-box">
+  <select id="method">
+    <option>GET</option>
+    <option>POST</option>
+    <option>PATCH</option>
+    <option>DELETE</option>
+  </select>
+
+  <input
+    id="url"
+    value="/api/books"
+    placeholder="/api/books or /api/books/:id"
+  />
+
+  <textarea id="body" placeholder="JSON Body (POST / PATCH only)"></textarea>
+
+  <button onclick="sendRequest()">Send</button>
+</div>
+
+<h2>Response</h2>
+<pre id="response"></pre>
+
+<h2>Books in Database</h2>
+<button onclick="loadBooks()">Refresh Books</button>
+<pre id="books"></pre>
+
+<script>
+async function sendRequest() {
+  const method = document.getElementById("method").value;
+  const url = document.getElementById("url").value;
+  const body = document.getElementById("body").value;
+
+  const options = {
+    method,
+    headers: { "Content-Type": "application/json" }
+  };
+
+  if (method !== "GET" && method !== "DELETE" && body) {
+    options.body = body;
+  }
+
+  const res = await fetch(url, options);
+  const text = await res.text();
+
+  document.getElementById("response").textContent = text;
+  loadBooks();
+}
+
+async function loadBooks() {
+  const res = await fetch("/api/books?limit=50");
+  const data = await res.json();
+  document.getElementById("books").textContent =
+    JSON.stringify(data, null, 2);
+}
+
+// Load books on page load
+loadBooks();
+</script>
+
+</body>
+</html>
