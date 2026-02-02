@@ -1,4 +1,4 @@
- 📚 Books API (Node.js + MongoDB)
+ 📚 Creuto (Node.js + MongoDB)
 
 This project is a simple **Books Management API** built using **Node.js, Express, MongoDB, and Mongoose**.  
 It supports **full CRUD operations** along with **search, filtering, sorting, and pagination**.
